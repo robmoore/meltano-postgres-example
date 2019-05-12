@@ -1,0 +1,205 @@
+version: 2
+
+sources:
+  - name: raw
+    loader: singer
+    tables:
+      - name: salesreason
+        description: 'Sales representative current information.'
+        columns:
+        - name: salesreasonid
+        - name: modifieddate
+
+      - name: salesorderdetail
+        description: 'Individual products associated with a specific sales order. See SalesOrderHeader.'
+        columns:
+        - name: salesorderid
+        - name: salesorderdetailid
+        - name: carriertrackingnumber
+        - name: orderqty
+        - name: productid
+        - name: specialofferid
+        - name: unitprice
+        - name: unitpricediscount
+        - name: rowguid
+        - name: modifieddate
+
+      - name: personcreditcard
+        description: 'Cross-reference table mapping people to their credit card information in the CreditCard table.'
+        columns:
+        - name: businessentityid
+        - name: creditcardid
+        - name: modifieddate
+
+      - name: salespersonquotahistory
+        description: 'Sales performance tracking.'
+        columns:
+        - name: businessentityid
+        - name: quotadate
+        - name: salesquota
+        - name: rowguid
+        - name: modifieddate
+
+      - name: salesorderheadersalesreason
+        description: 'Cross-reference table mapping sales orders to sales reason codes.'
+        columns:
+        - name: salesorderid
+        - name: salesreasonid
+        - name: modifieddate
+
+      - name: currency
+        description: 'Lookup table containing standard ISO currencies.'
+        columns:
+        - name: currencycode
+        - name: modifieddate
+
+      - name: specialofferproduct
+        description: 'Cross-reference table mapping products to special offer discounts.'
+        columns:
+        - name: specialofferid
+        - name: productid
+        - name: rowguid
+        - name: modifieddate
+
+      - name: salesperson
+        description: 'Sales representative current information.'
+        columns:
+        - name: businessentityid
+        - name: territoryid
+        - name: salesquota
+        - name: bonus
+        - name: commissionpct
+        - name: salesytd
+        - name: saleslastyear
+        - name: rowguid
+        - name: modifieddate
+
+      - name: customer
+        description: 'Current customer information. Also see the Person and Store tables.'
+        columns:
+        - name: customerid
+        - name: personid
+        - name: storeid
+        - name: territoryid
+        - name: rowguid
+        - name: modifieddate
+
+      - name: salesterritory
+        description: 'Sales territory lookup table.'
+        columns:
+        - name: territoryid
+        - name: countryregioncode
+        - name: group
+        - name: salesytd
+        - name: saleslastyear
+        - name: costytd
+        - name: costlastyear
+        - name: rowguid
+        - name: modifieddate
+
+      - name: specialoffer
+        description: 'Sale discounts lookup table.'
+        columns:
+        - name: specialofferid
+        - name: description
+        - name: discountpct
+        - name: type
+        - name: category
+        - name: startdate
+        - name: enddate
+        - name: minqty
+        - name: maxqty
+        - name: rowguid
+        - name: modifieddate
+
+      - name: creditcard
+        description: 'Customer credit card information.'
+        columns:
+        - name: creditcardid
+        - name: cardtype
+        - name: cardnumber
+        - name: expmonth
+        - name: expyear
+        - name: modifieddate
+
+      - name: salesorderheader
+        description: 'General sales order information.'
+        columns:
+        - name: salesorderid
+        - name: revisionnumber
+        - name: orderdate
+        - name: duedate
+        - name: shipdate
+        - name: status
+        - name: customerid
+        - name: salespersonid
+        - name: territoryid
+        - name: billtoaddressid
+        - name: shiptoaddressid
+        - name: shipmethodid
+        - name: creditcardid
+        - name: creditcardapprovalcode
+        - name: currencyrateid
+        - name: subtotal
+        - name: taxamt
+        - name: freight
+        - name: totaldue
+        - name: comment
+        - name: rowguid
+        - name: modifieddate
+
+      - name: salestaxrate
+        description: 'Tax rate lookup table.'
+        columns:
+        - name: salestaxrateid
+        - name: stateprovinceid
+        - name: taxtype
+        - name: taxrate
+        - name: rowguid
+        - name: modifieddate
+
+      - name: countryregioncurrency
+        description: 'Cross-reference table mapping ISO currency codes to a country or region.'
+        columns:
+        - name: countryregioncode
+        - name: currencycode
+        - name: modifieddate
+
+      - name: store
+        description: 'Customers (resellers) of Adventure Works products.'
+        columns:
+        - name: businessentityid
+        - name: salespersonid
+        - name: rowguid
+        - name: modifieddate
+
+      - name: shoppingcartitem
+        description: 'Contains online customer orders until the order is submitted or cancelled.'
+        columns:
+        - name: shoppingcartitemid
+        - name: shoppingcartid
+        - name: quantity
+        - name: productid
+        - name: datecreated
+        - name: modifieddate
+
+      - name: currencyrate
+        description: 'Currency exchange rates.'
+        columns:
+        - name: currencyrateid
+        - name: currencyratedate
+        - name: fromcurrencycode
+        - name: tocurrencycode
+        - name: averagerate
+        - name: endofdayrate
+        - name: modifieddate
+
+      - name: salesterritoryhistory
+        description: 'Sales representative transfers to other sales territories.'
+        columns:
+        - name: businessentityid
+        - name: territoryid
+        - name: startdate
+        - name: enddate
+        - name: rowguid
+        - name: modifieddate

@@ -1,0 +1,172 @@
+version: 2
+
+models:
+  - name: sales_reasons
+    columns:
+    - name: sales_reason_id
+    - name: modified_at
+
+  - name: sales_order_details
+    columns:
+    - name: sales_order_id
+    - name: sales_order_detail_id
+    - name: carrier_tracking_number
+    - name: order_qty
+    - name: product_id
+    - name: special_offer_id
+    - name: unit_price
+    - name: unit_price_discount
+    - name: modified_at
+
+  - name: person_creditcards
+    columns:
+    - name: business_entity_id
+    - name: credit_card_id
+    - name: modified_at
+
+  - name: salesperson_quota_histories
+    columns:
+    - name: business_entity_id
+    - name: quota_date
+    - name: sales_quota
+    - name: modified_at
+
+  - name: sales_order_header_sales_reasons
+    columns:
+    - name: sales_order_id
+    - name: sales_reason_id
+    - name: modified_at
+
+  - name: currencies
+    columns:
+    - name: currency_code
+    - name: modified_at
+
+  - name: special_offer_products
+    columns:
+    - name: special_offer_id
+    - name: product_id
+    - name: modified_at
+
+  - name: salespersons
+    columns:
+    - name: business_entity_id
+    - name: territory_id
+    - name: sales_quota
+    - name: bonus
+    - name: commission_pct
+    - name: sales_ytd
+    - name: sales_last_year
+    - name: modified_at
+
+  - name: customers
+    columns:
+    - name: customer_id
+    - name: person_id
+    - name: store_id
+    - name: territory_id
+    - name: modified_at
+
+  - name: sales_territories
+    columns:
+    - name: territory_id
+    - name: country_region_code
+    - name: group
+    - name: sales_ytd
+    - name: sales_last_year
+    - name: cost_ytd
+    - name: cost_last_year
+    - name: modified_at
+
+  - name: special_offers
+    columns:
+    - name: special_offer_id
+    - name: description
+    - name: discount_pct
+    - name: type
+    - name: category
+    - name: started_at
+    - name: ended_at
+    - name: min_qty
+    - name: max_qty
+    - name: modified_at
+
+  - name: credit_cards
+    columns:
+    - name: credit_card_id
+    - name: card_type
+    - name: card_number
+    - name: exp_month
+    - name: exp_year
+    - name: modified_at
+
+  - name: sales_order_headers
+    columns:
+    - name: sales_order_id
+    - name: revision_number
+    - name: order_date
+    - name: due_date
+    - name: ship_date
+    - name: status
+    - name: customer_id
+    - name: salesperson_id
+    - name: territory_id
+    - name: bill_to_address_id
+    - name: ship_to_address_id
+    - name: ship_method_id
+    - name: credit_card_id
+    - name: credit_card_approval_code
+    - name: currency_rate_id
+    - name: subtotal
+    - name: tax_amt
+    - name: freight
+    - name: total_due
+    - name: comment
+    - name: modified_at
+
+  - name: sales_tax_rates
+    columns:
+    - name: sales_tax_rate_id
+    - name: state_province_id
+    - name: tax_type
+    - name: tax_rate
+    - name: modified_at
+
+  - name: country_region_currencies
+    columns:
+    - name: country_region_code
+    - name: currency_code
+    - name: modified_at
+
+  - name: stores
+    columns:
+    - name: business_entity_id
+    - name: salesperson_id
+    - name: modified_at
+
+  - name: shopping_cart_items
+    columns:
+    - name: shopping_cart_item_id
+    - name: shopping_cart_id
+    - name: quantity
+    - name: product_id
+    - name: created_at
+    - name: modified_at
+
+  - name: currency_rates
+    columns:
+    - name: currency_rate_id
+    - name: currency_rate_at
+    - name: from_currency_code
+    - name: to_currency_code
+    - name: average_rate
+    - name: end_of_day_rate
+    - name: modified_at
+
+  - name: sales_territory_histories
+    columns:
+    - name: businessentity_id
+    - name: territory_id
+    - name: started_at
+    - name: ended_at
+    - name: modified_at

@@ -2,7 +2,6 @@ plugins:
   extractors:
   - config:
       dbname: $TAP_PG_DATABASE
-      # default_replication_method: LOG_BASED
       default_replication_method: FULL_TABLE
       host: $TAP_PG_ADDRESS
       password: $TAP_PG_PASSWORD
@@ -10,9 +9,7 @@ plugins:
       user: $TAP_PG_USERNAME
     executable: tap-postgres
     name: tap-postgres
-    # pip_url: tap-postgres
-    # Need repo version for now as it contains fix for catalog which has not yet been released.
-    pip_url: git+https://github.com/singer-io/tap-postgres.git
+    pip_url: tap-postgres
     select:
     - currencyrate.*
     - salesreason.*
@@ -35,12 +32,12 @@ plugins:
     - salesterritory.*
   loaders:
   - config:
-      postgres_database: $TARGET_PG_DATABASE
-      postgres_host: $TARGET_PG_ADDRESS
-      postgres_password: $TARGET_PG_PASSWORD
-      postgres_port: $TARGET_PG_PORT
-      postgres_schema: $TARGET_PG_SCHEMA
-      postgres_username: $TARGET_PG_USERNAME
+      postgres_database: $PG_DATABASE
+      postgres_host: $PG_ADDRESS
+      postgres_password: $PG_PASSWORD
+      postgres_port: $PG_PORT
+      postgres_schema: $PG_SCHEMA
+      postgres_username: $PG_USERNAME
     executable: target-postgres
     name: target-postgres
     pip_url: singer-target-postgres
@@ -49,7 +46,7 @@ plugins:
       core:
         dags_folder: $MELTANO_PROJECT_ROOT/orchestrate/dags
         plugins_folder: $MELTANO_PROJECT_ROOT/orchestrate/plugins
-        sql_alchemy_conn: sqlite:///.meltano/orchestrators/airflow/airflow.db
+        sql_alchemy_conn: postgresql+psycopg2://$PG_USERNAME:$PG_PASSWORD@$PG_ADDRESS:$PG_PORT/$PG_DATABASE
     name: airflow
     pip_url: apache-airflow==1.10.2
   transformers:
@@ -57,5 +54,13 @@ plugins:
     name: dbt
     pip_url: dbt
 project_id: d76cbadf-d052-42ea-99e2-4509676060d6
+schedules:
+- env:
+    MELTANO_JOB_ID: 'job_adentureworks'
+  extractor: tap-postgres
+  interval: '*/20 * * * *'
+  loader: target-postgres
+  name: adventureworks
+  transform: run
 send_anonymous_usage_stats: true
 version: 1.0

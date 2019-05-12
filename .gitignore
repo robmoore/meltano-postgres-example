@@ -1,4 +1,6 @@
 /venv
 /.meltano
 .env
-.env_docker
+.env_dev
+/transform/logs
+/transform/dbt_modules

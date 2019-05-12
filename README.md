@@ -59,3 +59,5 @@ meltano schedule adventureworks tap-postgres target-postgres '*/20 * * * *' --tr
 ```
 
 See https://www.sqldatadictionary.com/AdventureWorks2014/ for data dictionary.
+Generated bootstrap model using `dbt-helper` from the `transform` directory:
+`dbt-helper bootstrap --profiles-dir ./profile/ --schemas raw`

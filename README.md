@@ -32,10 +32,12 @@ meltano add orchestrator airflow
 ```
 And then manually edited `sql_alchemy_conn` value to point to postgres with
 `sql_alchemy_conn: postgresql+psycopg2://$PG_USERNAME:$PG_PASSWORD@$PG_ADDRESS:$PG_PORT/$PG_DATABASE`
+and `load_examples: False`.
 
-12. Manually trigger a task to run
+12. Initialize airflow db
+
 ```
-meltano invoke airflow run --raw meltano_adventureworks extract_load $(date -I)
+meltano invoke airflow initdb
 ```
 
 13. Start the airflow ui
@@ -61,3 +63,5 @@ meltano schedule adventureworks tap-postgres target-postgres '*/20 * * * *' --tr
 See https://www.sqldatadictionary.com/AdventureWorks2014/ for data dictionary.
 Generated bootstrap model using `dbt-helper` from the `transform` directory:
 `dbt-helper bootstrap --profiles-dir ./profile/ --schemas raw`
+
+See also https://medium.com/@damesavram/running-airflow-on-heroku-ed1d28f8013d

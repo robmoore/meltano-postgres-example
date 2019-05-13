@@ -47,7 +47,7 @@ meltano invoke airflow webserver -D
 
 14. Start the airflow scheduler, enabling background job processing
 ```
-$ meltano invoke airflow scheduler -D
+meltano invoke airflow scheduler -D
 ```
 
 15. [Maybe] Trigger a dag run

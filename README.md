@@ -52,7 +52,7 @@ meltano invoke airflow scheduler -D
 
 15. Scheduled job
 ```
-meltano schedule adventureworks tap-postgres target-postgres '*/20 * * * *' --transform run
+meltano schedule adventureworks tap-postgres target-postgres @hourly --transform run
 ```
 
 16. Unpause DAG

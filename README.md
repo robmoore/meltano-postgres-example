@@ -55,6 +55,11 @@ meltano invoke airflow scheduler -D
 meltano schedule adventureworks tap-postgres target-postgres '*/20 * * * *' --transform run
 ```
 
+16. Unpause DAG
+
+Log into Airflow at http://localhost:8080 and click on the 'off' control to the left.
+
+
 # Miscellaneous
 
 See https://www.sqldatadictionary.com/AdventureWorks2014/ for data dictionary.

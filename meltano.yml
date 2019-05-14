@@ -45,9 +45,9 @@ plugins:
   - config:
       core:
         dags_folder: $MELTANO_PROJECT_ROOT/orchestrate/dags
+        load_examples: 'False'
         plugins_folder: $MELTANO_PROJECT_ROOT/orchestrate/plugins
         sql_alchemy_conn: postgresql+psycopg2://$PG_USERNAME:$PG_PASSWORD@$PG_ADDRESS:$PG_PORT/$PG_DATABASE
-        load_examples: 'False'
     name: airflow
     pip_url: apache-airflow==1.10.2
   transformers:
@@ -57,7 +57,7 @@ plugins:
 project_id: d76cbadf-d052-42ea-99e2-4509676060d6
 schedules:
 - env:
-    MELTANO_JOB_ID: 'job_adentureworks'
+    MELTANO_JOB_ID: ''
   extractor: tap-postgres
   interval: '*/20 * * * *'
   loader: target-postgres

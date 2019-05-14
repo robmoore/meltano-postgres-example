@@ -10,7 +10,7 @@ meltano add --custom loader target-postgres
 3. Ran `meltano install`
 4. Copied .env to .env_docker (`export ` causes issues with docker-compose)
 5. Removed `export ` from .env_docker
-6. Ran `docker-compose up -d warehouse_db` from docker-compose venv
+6. Ran `docker-compose up -d warehouse_db` from docker-compose venv (ran into issues running with `docker-compose` bundled with meltano).
 7. Added `robmoore/adventureworks-for-postgres` to `docker-compose.yml` and then ran `docker-compose up -d source_db` from docker-compose venv
 8. Added tables for tap
 ```
@@ -32,7 +32,7 @@ meltano add orchestrator airflow
 ```
 And then manually edited `sql_alchemy_conn` value to point to postgres with
 `sql_alchemy_conn: postgresql+psycopg2://$PG_USERNAME:$PG_PASSWORD@$PG_ADDRESS:$PG_PORT/$PG_DATABASE`
-and `load_examples: False`.
+and `load_examples: 'False'`.
 
 12. Initialize airflow db
 
@@ -50,15 +50,12 @@ meltano invoke airflow webserver -D
 meltano invoke airflow scheduler -D
 ```
 
-15. [Maybe] Trigger a dag run
-```
-meltano invoke airflow trigger_dag meltano
-```
-
-16. Scheduled job
+15. Scheduled job
 ```
 meltano schedule adventureworks tap-postgres target-postgres '*/20 * * * *' --transform run
 ```
+
+# Miscellaneous
 
 See https://www.sqldatadictionary.com/AdventureWorks2014/ for data dictionary.
 Generated bootstrap model using `dbt-helper` from the `transform` directory:

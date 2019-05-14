@@ -36,7 +36,7 @@ plugins:
       postgres_host: $PG_ADDRESS
       postgres_password: $PG_PASSWORD
       postgres_port: $PG_PORT
-      postgres_schema: $PG_SCHEMA
+      postgres_schema: raw
       postgres_username: $PG_USERNAME
     executable: target-postgres
     name: target-postgres
@@ -57,7 +57,7 @@ plugins:
 project_id: d76cbadf-d052-42ea-99e2-4509676060d6
 schedules:
 - env:
-    MELTANO_JOB_ID: ''
+    MELTANO_JOB_ID: 'job_adventureworks'
   extractor: tap-postgres
   interval: '*/20 * * * *'
   loader: target-postgres

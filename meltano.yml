@@ -59,7 +59,7 @@ schedules:
 - env:
     MELTANO_JOB_ID: 'job_adventureworks'
   extractor: tap-postgres
-  interval: @hourly
+  interval: '@hourly'
   loader: target-postgres
   name: adventureworks
   transform: run

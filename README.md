@@ -66,4 +66,4 @@ See https://www.sqldatadictionary.com/AdventureWorks2014/ for data dictionary.
 Generated bootstrap model using `dbt-helper` from the `transform` directory:
 `dbt-helper bootstrap --profiles-dir ./profile/ --schemas raw`
 
-See also https://medium.com/@damesavram/running-airflow-on-heroku-ed1d28f8013d
+See also [Running Airflow on Heroku](https://medium.com/@damesavram/running-airflow-on-heroku-ed1d28f8013d).

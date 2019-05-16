@@ -8,10 +8,10 @@ meltano add --custom loader target-postgres
 ```
 2. Manually set config vars in `meltano.yml` for tap and target.
 3. Ran `meltano install`
-4. Copied .env to .env_docker (`export ` causes issues with docker-compose)
-5. Removed `export ` from .env_docker
-6. Ran `docker-compose up -d warehouse_db` from docker-compose venv (ran into issues running with `docker-compose` bundled with meltano).
-7. Added `robmoore/adventureworks-for-postgres` to `docker-compose.yml` and then ran `docker-compose up -d source_db` from docker-compose venv
+4. Created `.env_template` file with default values.
+5. Copied `.env_template` to `.env`
+6. Ran `docker-compose up -d warehouse_db` from separate docker-compose virtual env.
+7. Added `robmoore/adventureworks-for-postgres` to `docker-compose.yml` and then ran `docker-compose up -d source_db` from docker-compose virtual env.
 8. Added tables for tap
 ```
 meltano invoke tap-postgres --discover
